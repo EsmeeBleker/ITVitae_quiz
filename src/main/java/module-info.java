@@ -5,4 +5,6 @@ module com.group.quiz {
 
     opens com.group.quiz to javafx.fxml;
     exports com.group.quiz;
+    exports Model;
+    opens Model to javafx.fxml;
 }

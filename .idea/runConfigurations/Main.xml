@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="HelloApplication" type="Application" factoryName="Application" nameIsGenerated="true">
-    <option name="MAIN_CLASS_NAME" value="com.group.quiz.HelloApplication" />
+  <configuration default="false" name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="com.group.quiz.Main" />
     <module name="quiz" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.group.quiz.*" />
+        <option name="PATTERN" value="Model.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
