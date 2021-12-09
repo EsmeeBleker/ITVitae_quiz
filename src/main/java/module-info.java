@@ -1,6 +1,7 @@
 module com.group.quiz {
     requires javafx.controls;
     requires javafx.fxml;
+    requires org.json;
 
 
     opens com.group.quiz to javafx.fxml;
