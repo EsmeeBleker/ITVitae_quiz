@@ -6,18 +6,17 @@ import org.json.JSONObject;
 public class VerzamelingVragen {
     private JSONObject vragenObject;
 
-    public VerzamelingVragen(String jsonString) throws Exception {
+    public VerzamelingVragen(String jsonString) {
         this.vragenObject = new JSONObject(jsonString);
 
-        if (vragenObject.get("response_code").equals(0)){
-            System.out.println("Vragen van URL gelezen. Response code is 0 (Correct)");
+        if (vragenObject.get("response_code").equals(0)){ //Response code: 0 betekent 'correct uitgelezen'
+            System.out.println("Vragen van URL correct uitgelezen.");
         }
         else {
-            throw new Exception("Vragen van URL lezen is fout gegaan. Response code is niet 0");
+            System.out.println("Vragen van URL lezen is fout gegaan. Response code is niet 0");
         }
-        System.out.println("Code: " + vragenObject.get("response_code"));
 
-        System.out.println(vragenObject.get("results"));
+        //Geeft string met alle vragen: System.out.println(vragenObject.get("results"));
 
     }
 
@@ -51,5 +50,9 @@ public class VerzamelingVragen {
 
     public String getDifficulty(int vraagnr) {
         return vragenObject.getJSONArray("results").getJSONObject(vraagnr).get("difficulty").toString();
+    }
+
+    public String getType(int vraagnr) {
+        return vragenObject.getJSONArray("results").getJSONObject(vraagnr).get("type").toString();
     }
 }
