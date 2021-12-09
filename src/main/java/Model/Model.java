@@ -1,6 +1,15 @@
 package Model;
 
+
+
+
 public class Model {
+    //Bij aanmaken van Model wordt een URL aangeroepen en wordt een verzameling vragen in 'verzameling' gestopt.
+    String urlAddress = "https://opentdb.com/api.php?amount=1&type=multiple";         //TODO: url bouwen?
+    URLReader reader = new URLReader();
+    String JSONstring = reader.read(urlAddress);
+    VerzamelingVragen verzameling = new VerzamelingVragen(JSONstring);
+
     public Vraag currentQuestion = new Vraag();
 
     public Vraag createQuestion()
@@ -21,6 +30,33 @@ public class Model {
         antwoord3.correct = false;
         Antwoord antwoord4 = new Antwoord();
         antwoord4.antwoord ="Captain Hook";
+        antwoord4.correct = false;
+        vraag1.antwoord1 = antwoord1;
+        vraag1.antwoord2 = antwoord2;
+        vraag1.antwoord3 = antwoord3;
+        vraag1.antwoord4 = antwoord4;
+        currentQuestion = vraag1;
+        return (vraag1);
+    }
+
+    public Vraag createVariableQuestion()
+    {
+        Vraag vraag1 = new Vraag();
+        vraag1.category = verzameling.getCategory(0);
+        vraag1.type = verzameling.getType(0);
+        vraag1.difficulty = verzameling.getType(0);
+        vraag1.question = verzameling.getQuestion(0);
+        Antwoord antwoord1 = new Antwoord();
+        antwoord1.antwoord = verzameling.getCorrectAnswer(0);
+        antwoord1.correct = true;
+        Antwoord antwoord2 = new Antwoord();
+        antwoord2.antwoord = verzameling.getIncorrectAnswer(0,0);
+        antwoord2.correct = false;
+        Antwoord antwoord3 = new Antwoord();
+        antwoord3.antwoord = verzameling.getIncorrectAnswer(0,1);
+        antwoord3.correct = false;
+        Antwoord antwoord4 = new Antwoord();
+        antwoord4.antwoord = verzameling.getIncorrectAnswer(0,2);
         antwoord4.correct = false;
         vraag1.antwoord1 = antwoord1;
         vraag1.antwoord2 = antwoord2;
