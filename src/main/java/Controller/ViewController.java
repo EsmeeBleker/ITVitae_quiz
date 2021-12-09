@@ -18,14 +18,29 @@ public class ViewController {
     }
 
     public void setQuestion(String question) {
-        fxController.setText(question);
+        fxController.setQuestionText(question);
     }
 
     public void setAnswer(String[] answers) {
-        fxController.setTextButtonA(answers[0]);
-        fxController.setTextButtonB(answers[1]);
-        fxController.setTextButtonC(answers[2]);
-        fxController.setTextButtonD(answers[3]);
+        fxController.setTextButton(answers);
     }
 
+    public void buttonClicked(int i) {
+        modelController.checkAnswer(i);
+    }
+
+    public void checkAnswer(boolean correct) {
+        String text;
+        if (correct == true){
+            text = "Your answer is correct";
+        }
+        else{
+            text = "Your answer is incorrect";
+        }
+        fxController.setAnswerLabel(text);
+    }
+
+    public void colourButton(boolean[] bool) {
+        fxController.ButtonColour(bool);
+    }
 }

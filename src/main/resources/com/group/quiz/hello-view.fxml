@@ -7,10 +7,10 @@
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="192.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.quiz.FxController">
     <children>
         <Label fx:id="questionLabel" alignment="CENTER" prefHeight="57.0" prefWidth="590.0" text="Label" />
-        <Button fx:id="buttonA" mnemonicParsing="false" prefHeight="25.0" prefWidth="672.0" text="Button" />
-        <Button fx:id="buttonB" mnemonicParsing="false" prefHeight="25.0" prefWidth="659.0" text="Button" />
-        <Button fx:id="buttonC" mnemonicParsing="false" prefHeight="25.0" prefWidth="686.0" text="Button" />
-        <Button fx:id="buttonD" mnemonicParsing="false" prefHeight="25.0" prefWidth="707.0" text="Button" />
+        <Button fx:id="buttonA" mnemonicParsing="false" prefHeight="25.0" prefWidth="672.0" text="Button" onAction="#onAButtonClick"/>
+        <Button fx:id="buttonB" mnemonicParsing="false" prefHeight="25.0" prefWidth="659.0" text="Button" onAction="#onBButtonClick"/>
+        <Button fx:id="buttonC" mnemonicParsing="false" prefHeight="25.0" prefWidth="686.0" text="Button" onAction="#onCButtonClick"/>
+        <Button fx:id="buttonD" mnemonicParsing="false" prefHeight="25.0" prefWidth="707.0" text="Button" onAction="#onDButtonClick"/>
         <HBox alignment="BOTTOM_RIGHT" prefHeight="35.0" prefWidth="600.0">
             <children>
                 <Label fx:id="answerLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="540.0" text="Label">

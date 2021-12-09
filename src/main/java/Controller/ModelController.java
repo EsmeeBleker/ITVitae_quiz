@@ -19,10 +19,15 @@ public class ModelController {
         answers[2] = vraag1.antwoord3.antwoord;
         answers[3] = vraag1.antwoord4.antwoord;
         viewController.setQuestion(vraag1.question);
-        //viewController.setAnswerA(vraag1.antwoord1.antwoord);
-        //viewController.setAnswerA(vraag1.antwoord2.antwoord);
-        //viewController.setAnswerA(vraag1.antwoord3.antwoord);
-        //viewController.setAnswerA(vraag1.antwoord4.antwoord);
         viewController.setAnswer(answers);
+    }
+
+    public void checkAnswer(int i) {
+        boolean correct = model.checkAnswer(i);
+        viewController.checkAnswer(correct);
+
+        boolean[] bool = model.colourButtons();
+        viewController.colourButton(bool);
+        // if correct == true --> increase player score
     }
 }
