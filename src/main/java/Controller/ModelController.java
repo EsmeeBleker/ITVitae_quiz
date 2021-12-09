@@ -12,7 +12,7 @@ public class ModelController {
     }
 
     public void getQuestion() {
-        Vraag vraag1 = model.createQuestion();
+        Vraag vraag1 = model.createVariableQuestion(); //(Wisselende vraag)
         String[] answers = new String[4];
         answers[0] = vraag1.antwoord1.antwoord;
         answers[1] = vraag1.antwoord2.antwoord;
