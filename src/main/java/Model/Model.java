@@ -11,6 +11,7 @@ public class Model {
     VerzamelingVragen verzameling = new VerzamelingVragen(JSONstring);
 
     public Vraag currentQuestion = new Vraag();
+    public Speler speler1 = new Speler();
 
     public Vraag createQuestion()
     {
@@ -71,18 +72,34 @@ public class Model {
     {
         if (i == 1)
         {
+            if (currentQuestion.antwoord1.correct == true)
+            {
+                speler1.increaseScore();
+            }
             return currentQuestion.antwoord1.correct;
         }
         else if (i == 2)
         {
+            if (currentQuestion.antwoord2.correct == true)
+            {
+                speler1.increaseScore();
+            }
             return currentQuestion.antwoord2.correct;
         }
         else if (i == 3)
         {
+            if (currentQuestion.antwoord3.correct == true)
+            {
+                speler1.increaseScore();
+            }
             return currentQuestion.antwoord3.correct;
         }
         else
         {
+            if (currentQuestion.antwoord4.correct == true)
+            {
+                speler1.increaseScore();
+            }
             return currentQuestion.antwoord4.correct;
         }
     }
@@ -95,5 +112,10 @@ public class Model {
         boolean d = currentQuestion.antwoord4.correct;
         boolean[] bool = new boolean[] {a, b, c, d};
         return bool;
+    }
+
+    public int getScore()
+    {
+        return speler1.getScore();
     }
 }

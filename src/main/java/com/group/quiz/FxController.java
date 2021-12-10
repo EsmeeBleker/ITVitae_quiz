@@ -115,4 +115,8 @@ public class FxController {
         }
         buttonNext.setDisable(true);
     }
+
+    public void updateScore(String scr) {
+        scoreLabel.setText("Score: " + scr);
+    }
 }

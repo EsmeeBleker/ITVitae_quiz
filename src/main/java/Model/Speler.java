@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Speler
 {
     String name;
-    private int score;
+    private int score = 0;
 
     public int getScore(){
         return this.score;

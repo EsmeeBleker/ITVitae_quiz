@@ -9,6 +9,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="346.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.quiz.FxController">
     <children>
+      <Label fx:id="progressLabel" prefHeight="17.0" prefWidth="145.0" text="Label" />
         <Label fx:id="questionLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="57.0" prefWidth="597.0" text="What is your name?" />
       <TextField fx:id="nameField" alignment="CENTER" />
         <Button fx:id="buttonA" disable="true" mnemonicParsing="false" onAction="#onAButtonClick" prefHeight="25.0" prefWidth="672.0" text="Button" visible="false" />
