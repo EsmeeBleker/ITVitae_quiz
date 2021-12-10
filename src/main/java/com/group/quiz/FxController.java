@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class FxController {
 
@@ -25,6 +26,12 @@ public class FxController {
     private Button buttonD;
     @FXML
     private Button buttonNext;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private Label scoreLabel;
+    @FXML
+    private TextField nameField;
 
     public FxController() {
         viewController = new ViewController(this);
@@ -34,6 +41,13 @@ public class FxController {
     protected void onNextButtonClick() {
         viewController.onButtonNextClick();
         enableButtons();
+        String name = nameField.getText();
+        nameLabel.setText(name);
+        nameField.setDisable(true);
+        nameField.setVisible(false);
+        nameLabel.setVisible(true);
+        scoreLabel.setVisible(true);
+        answerLabel.setVisible(true);
     }
     @FXML
     public void setQuestionText(String question) {
@@ -93,11 +107,16 @@ public class FxController {
     }
 
     public void enableButtons(){
-        buttonA.setDisable(false);
-        buttonB.setDisable(false);
-        buttonC.setDisable(false);
-        buttonD.setDisable(false);
+        Button[] buttons = new Button[] {buttonA, buttonB, buttonC, buttonD};
+        for (int i = 0; i < buttons.length; i++){
+            buttons[i].setStyle("-fx-background-color: #dcdcdc; ");
+            buttons[i].setDisable(false);
+            buttons[i].setVisible(true);
+        }
         buttonNext.setDisable(true);
-        buttonA.setStyle("-fx-background-color: #dcdcdc; ");
+    }
+
+    public void updateScore(String scr) {
+        scoreLabel.setText("Score: " + scr);
     }
 }

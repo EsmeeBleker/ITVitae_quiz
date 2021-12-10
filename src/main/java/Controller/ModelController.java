@@ -28,6 +28,9 @@ public class ModelController {
 
         boolean[] bool = model.colourButtons();
         viewController.colourButton(bool);
-        // if correct == true --> increase player score
+
+        // update player score
+        int score = model.getScore();
+        viewController.updateScore(score);
     }
 }

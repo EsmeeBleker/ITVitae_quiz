@@ -43,4 +43,9 @@ public class ViewController {
     public void colourButton(boolean[] bool) {
         fxController.ButtonColour(bool);
     }
+
+    public void updateScore(int score) {
+        String scr = String.valueOf(score);
+        fxController.updateScore(scr);
+    }
 }
