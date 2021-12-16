@@ -47,4 +47,8 @@ public class ModelController {
     public void fillArray(){
         model.fillVragenArray();
     }
+
+    public boolean isLastQuestion() {
+        return model.isLastQuestion();
+    }
 }

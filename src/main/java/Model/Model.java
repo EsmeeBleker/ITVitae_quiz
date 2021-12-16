@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Model {
     //Bij aanmaken van Model wordt een URL aangeroepen en wordt een verzameling vragen in 'verzameling' gestopt.
-    String urlAddress = "https://opentdb.com/api.php?amount=3&type=multiple";         //TODO: url bouwen?
+    String urlAddress = "https://opentdb.com/api.php?amount=4&type=multiple";         //TODO: url bouwen?
     String JSONstring = URLReader.read(urlAddress);
     VerzamelingVragen verzameling = new VerzamelingVragen(JSONstring);
 
@@ -162,5 +162,13 @@ public class Model {
 
     public void increaseVraagNr() {
         this.vraagNr += 1;
+    }
+
+    public boolean isLastQuestion() {
+        boolean lastQuestion = false;
+        if (getVraagNr() == VragenArray.length-1) {
+            lastQuestion = true;
+        }
+        return lastQuestion;
     }
 }
