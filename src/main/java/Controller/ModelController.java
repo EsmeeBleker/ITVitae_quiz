@@ -52,4 +52,8 @@ public class ModelController {
     public void buildURL(String maxQuestions) {
         model.setMaxQuestions(maxQuestions);
     }
+
+    public boolean isLastQuestion() {
+        return model.isLastQuestion();
+    }
 }

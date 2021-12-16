@@ -13,8 +13,12 @@ public class ViewController {
     }
 
     public void onButtonNextClick() {
-        modelController.incrementQuestion();
-        modelController.getQuestion();
+        if (modelController.isLastQuestion()) {
+            System.out.println("einde quiz!"); //todo: vervang door FX scherm
+        } else {
+            modelController.incrementQuestion();
+            modelController.getQuestion();
+        }
     }
 
     public void setQuestion(String question) {
