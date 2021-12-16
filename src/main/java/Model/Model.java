@@ -1,7 +1,9 @@
 package Model;
 
 
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Model {
     //Bij aanmaken van Model wordt een URL aangeroepen en wordt een verzameling vragen in 'verzameling' gestopt.
@@ -20,22 +22,29 @@ public class Model {
         vraag1.type = "multiple";
         vraag1.difficulty = "medium";
         vraag1.question = "In Kingdom Hearts, who abducts Jasmine in the Lamp Chamber?";
-        Antwoord antwoord1 = new Antwoord();
-        antwoord1.antwoord ="Riku";
-        antwoord1.correct = true;
-        Antwoord antwoord2 = new Antwoord();
-        antwoord2.antwoord ="Riku Replica";
-        antwoord2.correct = false;
-        Antwoord antwoord3 = new Antwoord();
-        antwoord3.antwoord ="Xaldin";
-        antwoord3.correct = false;
-        Antwoord antwoord4 = new Antwoord();
-        antwoord4.antwoord ="Captain Hook";
-        antwoord4.correct = false;
-        vraag1.antwoord1 = antwoord1;
-        vraag1.antwoord2 = antwoord2;
-        vraag1.antwoord3 = antwoord3;
-        vraag1.antwoord4 = antwoord4;
+
+        Antwoord antwoordA = new Antwoord();
+        antwoordA.setAntwoord("Riku");
+        antwoordA.setCorrect(true);
+        Antwoord antwoordB = new Antwoord();
+        antwoordB.setAntwoord("Riku Replica");
+        antwoordB.setCorrect(false);
+        Antwoord antwoordC = new Antwoord();
+        antwoordC.setAntwoord("Xaldin");
+        antwoordC.setCorrect(false);
+        Antwoord antwoordD = new Antwoord();
+        antwoordD.setAntwoord("Captain Hook");
+        antwoordD.setCorrect(false);
+
+        Antwoord[] antwoordenLijst = {antwoordA, antwoordB, antwoordC, antwoordD};
+        Collections.shuffle(Arrays.asList(antwoordenLijst));
+
+        vraag1.antwoord1 = antwoordenLijst[0].getObject();
+        vraag1.antwoord2 = antwoordenLijst[1].getObject();
+        vraag1.antwoord3 = antwoordenLijst[2].getObject();
+        vraag1.antwoord4 = antwoordenLijst[3].getObject();
+
+
         currentQuestion = vraag1;
         return (vraag1);
     }
@@ -47,22 +56,28 @@ public class Model {
         vraag1.type = verzameling.getType(0);
         vraag1.difficulty = verzameling.getType(0);
         vraag1.question = verzameling.getQuestion(0);
-        Antwoord antwoord1 = new Antwoord();
-        antwoord1.antwoord = verzameling.getCorrectAnswer(0);
-        antwoord1.correct = true;
-        Antwoord antwoord2 = new Antwoord();
-        antwoord2.antwoord = verzameling.getIncorrectAnswer(0,0);
-        antwoord2.correct = false;
-        Antwoord antwoord3 = new Antwoord();
-        antwoord3.antwoord = verzameling.getIncorrectAnswer(0,1);
-        antwoord3.correct = false;
-        Antwoord antwoord4 = new Antwoord();
-        antwoord4.antwoord = verzameling.getIncorrectAnswer(0,2);
-        antwoord4.correct = false;
-        vraag1.antwoord1 = antwoord1;
-        vraag1.antwoord2 = antwoord2;
-        vraag1.antwoord3 = antwoord3;
-        vraag1.antwoord4 = antwoord4;
+
+        Antwoord antwoordA = new Antwoord();
+        antwoordA.setAntwoord(verzameling.getCorrectAnswer(0));
+        antwoordA.setCorrect(true);
+        Antwoord antwoordB = new Antwoord();
+        antwoordB.setAntwoord(verzameling.getIncorrectAnswer(0,0));
+        antwoordB.setCorrect(false);
+        Antwoord antwoordC = new Antwoord();
+        antwoordC.setAntwoord(verzameling.getIncorrectAnswer(0,1));
+        antwoordC.setCorrect(false);
+        Antwoord antwoordD = new Antwoord();
+        antwoordD.setAntwoord(verzameling.getIncorrectAnswer(0,2));
+        antwoordD.setCorrect(false);
+
+        Antwoord[] antwoordenLijst = {antwoordA, antwoordB, antwoordC, antwoordD};
+        Collections.shuffle(Arrays.asList(antwoordenLijst));
+
+        vraag1.antwoord1 = antwoordenLijst[0].getObject();
+        vraag1.antwoord2 = antwoordenLijst[1].getObject();
+        vraag1.antwoord3 = antwoordenLijst[2].getObject();
+        vraag1.antwoord4 = antwoordenLijst[3].getObject();
+
         currentQuestion = vraag1;
         return (vraag1);
     }
@@ -72,44 +87,44 @@ public class Model {
     {
         if (i == 1)
         {
-            if (currentQuestion.antwoord1.correct == true)
+            if (currentQuestion.antwoord1.getCorrect())
             {
                 speler1.increaseScore();
             }
-            return currentQuestion.antwoord1.correct;
+            return currentQuestion.antwoord1.getCorrect();
         }
         else if (i == 2)
         {
-            if (currentQuestion.antwoord2.correct == true)
+            if (currentQuestion.antwoord2.getCorrect())
             {
                 speler1.increaseScore();
             }
-            return currentQuestion.antwoord2.correct;
+            return currentQuestion.antwoord2.getCorrect();
         }
         else if (i == 3)
         {
-            if (currentQuestion.antwoord3.correct == true)
+            if (currentQuestion.antwoord3.getCorrect())
             {
                 speler1.increaseScore();
             }
-            return currentQuestion.antwoord3.correct;
+            return currentQuestion.antwoord3.getCorrect();
         }
         else
         {
-            if (currentQuestion.antwoord4.correct == true)
+            if (currentQuestion.antwoord4.getCorrect())
             {
                 speler1.increaseScore();
             }
-            return currentQuestion.antwoord4.correct;
+            return currentQuestion.antwoord4.getCorrect();
         }
     }
 
     public boolean[] colourButtons()
     {
-        boolean a = currentQuestion.antwoord1.correct;
-        boolean b = currentQuestion.antwoord2.correct;
-        boolean c = currentQuestion.antwoord3.correct;
-        boolean d = currentQuestion.antwoord4.correct;
+        boolean a = currentQuestion.antwoord1.getCorrect();
+        boolean b = currentQuestion.antwoord2.getCorrect();
+        boolean c = currentQuestion.antwoord3.getCorrect();
+        boolean d = currentQuestion.antwoord4.getCorrect();
         boolean[] bool = new boolean[] {a, b, c, d};
         return bool;
     }

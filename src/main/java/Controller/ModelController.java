@@ -14,10 +14,10 @@ public class ModelController {
     public void getQuestion() {
         Vraag vraag1 = model.createVariableQuestion(); //(Wisselende vraag)
         String[] answers = new String[4];
-        answers[0] = vraag1.antwoord1.antwoord;
-        answers[1] = vraag1.antwoord2.antwoord;
-        answers[2] = vraag1.antwoord3.antwoord;
-        answers[3] = vraag1.antwoord4.antwoord;
+        answers[0] = vraag1.antwoord1.getAntwoord();
+        answers[1] = vraag1.antwoord2.getAntwoord();
+        answers[2] = vraag1.antwoord3.getAntwoord();
+        answers[3] = vraag1.antwoord4.getAntwoord();
         viewController.setQuestion(vraag1.question);
         viewController.setAnswer(answers);
     }
