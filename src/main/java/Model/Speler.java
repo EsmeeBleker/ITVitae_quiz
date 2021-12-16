@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Speler
 {
-    String name;
+    public String name;
     private int score = 0;
 
     public int getScore(){

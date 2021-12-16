@@ -27,6 +27,8 @@ public class FxController {
     @FXML
     private Button buttonNext;
     @FXML
+    private Button buttonOK;
+    @FXML
     private Label nameLabel;
     @FXML
     private Label scoreLabel;
@@ -41,13 +43,7 @@ public class FxController {
     protected void onNextButtonClick() {
         viewController.onButtonNextClick();
         enableButtons();
-        String name = nameField.getText();
-        nameLabel.setText(name);
-        nameField.setDisable(true);
-        nameField.setVisible(false);
-        nameLabel.setVisible(true);
-        scoreLabel.setVisible(true);
-        answerLabel.setVisible(true);
+
     }
     @FXML
     public void setQuestionText(String question) {
@@ -79,6 +75,21 @@ public class FxController {
     public void onDButtonClick() {
         viewController.buttonClicked(4);
         disableButtons();
+    }
+    public void onOKbuttonClick(){
+        String name = nameField.getText();
+        viewController.onButtonNextClick();
+        enableButtons();
+        nameLabel.setText(name);
+        nameField.setDisable(true);
+        nameField.setVisible(false);
+        nameLabel.setVisible(true);
+        scoreLabel.setVisible(true);
+        answerLabel.setVisible(true);
+        buttonNext.setVisible(true);
+        buttonNext.setDisable(true);
+        buttonOK.setDisable(true);
+        buttonOK.setVisible(false);
     }
 
     public void setAnswerLabel(String text) {
