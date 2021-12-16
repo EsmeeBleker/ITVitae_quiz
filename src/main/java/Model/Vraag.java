@@ -11,4 +11,13 @@ public class Vraag
     public Antwoord antwoord2;
     public Antwoord antwoord3;
     public Antwoord antwoord4;
+    private int vraagnr;
+
+    public int getVraagnummer(){
+        return this.vraagnr;
+    }
+
+    public void setVraagnummer(int index){
+        this.vraagnr = index;
+    }
 }
