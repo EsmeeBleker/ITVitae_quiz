@@ -14,6 +14,11 @@ public class Model {
 
     private int vraagNr;
     private Vraag currentQuestion;
+    private String maxQuestions;
+
+    public void setMaxQuestions(String max){
+        this.maxQuestions = max;
+    }
 
     public void fillVragenArray() {
         for (int vraagnr = 0; vraagnr < verzamelingVragenAantal; vraagnr++) {

@@ -57,4 +57,12 @@ public class ViewController {
         modelController.fillArray();
         modelController.getQuestion();
     }
+
+    public void setProgress(int vraagNr) {
+        fxController.setProgess(vraagNr + 1);
+    }
+
+    public void setMaxQuestions(String maxQuestions) {
+        modelController.buildURL(maxQuestions);
+    }
 }

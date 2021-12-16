@@ -22,6 +22,7 @@ public class ModelController {
         answers[3] = vraag1.antwoord4.getAntwoord();
         viewController.setQuestion(vraag1.question);
         viewController.setAnswer(answers);
+        viewController.setProgress(model.getVraagNr());
     }
 
     public void incrementQuestion() {
@@ -46,5 +47,9 @@ public class ModelController {
 
     public void fillArray(){
         model.fillVragenArray();
+    }
+
+    public void buildURL(String maxQuestions) {
+        model.setMaxQuestions(maxQuestions);
     }
 }
