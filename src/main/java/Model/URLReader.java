@@ -28,7 +28,7 @@ public class URLReader {
             jsonString = sb.toString();
 
         } catch (Exception e) {
-            System.out.println("Exception: " + e.toString());
+            System.out.println("Exception: " + e);
         }
         return jsonString;
     }

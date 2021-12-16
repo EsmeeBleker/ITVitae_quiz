@@ -33,4 +33,8 @@ public class ModelController {
         int score = model.getScore();
         viewController.updateScore(score);
     }
+
+    public void setName(String name) {
+        model.setPlayerName(name);
+    }
 }
