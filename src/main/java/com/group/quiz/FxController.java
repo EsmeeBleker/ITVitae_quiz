@@ -79,7 +79,7 @@ public class FxController {
     public void onOKbuttonClick(){
         String name = nameField.getText();
         viewController.setName(name);
-        viewController.onButtonNextClick();
+        viewController.onButtonOkClick();
         enableButtons();
         nameLabel.setText(name);
         nameField.setDisable(true);
