@@ -13,6 +13,7 @@ public class ViewController {
     }
 
     public void onButtonNextClick() {
+        modelController.incrementQuestion();
         modelController.getQuestion();
     }
 
@@ -50,5 +51,10 @@ public class ViewController {
 
     public void setName(String name) {
         modelController.setName(name);
+    }
+
+    public void onButtonOkClick() {
+        modelController.fillArray();
+        modelController.getQuestion();
     }
 }

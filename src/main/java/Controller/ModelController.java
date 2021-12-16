@@ -12,7 +12,9 @@ public class ModelController {
     }
 
     public void getQuestion() {
-        Vraag vraag1 = model.createVariableQuestion(); //(Wisselende vraag)
+        //Vraag vraag1 = model.createQuestion(); //(Wisselende vraag)
+        int vraagnr = model.getVraagNr();
+        Vraag vraag1 = model.getQuestionFromVragenArray(vraagnr);
         String[] answers = new String[4];
         answers[0] = vraag1.antwoord1.getAntwoord();
         answers[1] = vraag1.antwoord2.getAntwoord();
@@ -20,6 +22,10 @@ public class ModelController {
         answers[3] = vraag1.antwoord4.getAntwoord();
         viewController.setQuestion(vraag1.question);
         viewController.setAnswer(answers);
+    }
+
+    public void incrementQuestion() {
+        model.increaseVraagNr();
     }
 
     public void checkAnswer(int i) {
@@ -36,5 +42,9 @@ public class ModelController {
 
     public void setName(String name) {
         model.setPlayerName(name);
+    }
+
+    public void fillArray(){
+        model.fillVragenArray();
     }
 }

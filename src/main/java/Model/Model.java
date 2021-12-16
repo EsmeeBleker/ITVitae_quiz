@@ -1,19 +1,33 @@
 package Model;
 
-
 import java.util.Arrays;
 import java.util.Collections;
 
 public class Model {
     //Bij aanmaken van Model wordt een URL aangeroepen en wordt een verzameling vragen in 'verzameling' gestopt.
-    String urlAddress = "https://opentdb.com/api.php?amount=1&type=multiple";         //TODO: url bouwen?
+    String urlAddress = "https://opentdb.com/api.php?amount=3&type=multiple";         //TODO: url bouwen?
     String JSONstring = URLReader.read(urlAddress);
     VerzamelingVragen verzameling = new VerzamelingVragen(JSONstring);
 
-    public Vraag currentQuestion = new Vraag();
+    int verzamelingVragenAantal = verzameling.getAmountQuestions();
+    public Vraag[] VragenArray = new Vraag[verzamelingVragenAantal];
+
+    private int vraagNr;
+    private Vraag currentQuestion;
+
+    public void fillVragenArray() {
+        for (int vraagnr = 0; vraagnr < verzamelingVragenAantal; vraagnr++) {
+           Vraag newVraag = createVariableQuestion(vraagnr);
+           VragenArray[vraagnr] = newVraag;
+        }
+    }
+
+    //public Vraag currentQuestion = new Vraag();
     public Speler speler1 = new Speler();
 
-    /*public Vraag createQuestion()
+    /*
+    public Vraag createQuestion()
+
     {
         Vraag vraag1 = new Vraag();
         vraag1.category = "Entertainment: Video Games";
@@ -45,27 +59,29 @@ public class Model {
 
         currentQuestion = vraag1;
         return (vraag1);
-    }*/
+    }
+    */
 
-    public Vraag createVariableQuestion()
+    public Vraag createVariableQuestion(int vraagnr)
     {
         Vraag vraag1 = new Vraag();
-        vraag1.category = verzameling.getCategory(0);
-        vraag1.type = verzameling.getType(0);
-        vraag1.difficulty = verzameling.getType(0);
-        vraag1.question = verzameling.getQuestion(0);
+        vraag1.category = verzameling.getCategory(vraagnr);
+        vraag1.type = verzameling.getType(vraagnr);
+        vraag1.difficulty = verzameling.getType(vraagnr);
+        vraag1.question = verzameling.getQuestion(vraagnr);
+        vraag1.setVraagnummer(vraagnr);
 
         Antwoord antwoordA = new Antwoord();
-        antwoordA.setAntwoord(verzameling.getCorrectAnswer(0));
+        antwoordA.setAntwoord(verzameling.getCorrectAnswer(vraagnr));
         antwoordA.setCorrect(true);
         Antwoord antwoordB = new Antwoord();
-        antwoordB.setAntwoord(verzameling.getIncorrectAnswer(0,0));
+        antwoordB.setAntwoord(verzameling.getIncorrectAnswer(vraagnr,0));
         antwoordB.setCorrect(false);
         Antwoord antwoordC = new Antwoord();
-        antwoordC.setAntwoord(verzameling.getIncorrectAnswer(0,1));
+        antwoordC.setAntwoord(verzameling.getIncorrectAnswer(vraagnr,1));
         antwoordC.setCorrect(false);
         Antwoord antwoordD = new Antwoord();
-        antwoordD.setAntwoord(verzameling.getIncorrectAnswer(0,2));
+        antwoordD.setAntwoord(verzameling.getIncorrectAnswer(vraagnr,2));
         antwoordD.setCorrect(false);
 
         Antwoord[] antwoordenLijst = {antwoordA, antwoordB, antwoordC, antwoordD};
@@ -76,7 +92,7 @@ public class Model {
         vraag1.antwoord3 = antwoordenLijst[2].getObject();
         vraag1.antwoord4 = antwoordenLijst[3].getObject();
 
-        currentQuestion = vraag1;
+        //currentQuestion = vraag1;
         return (vraag1);
     }
 
@@ -133,5 +149,18 @@ public class Model {
 
     public void setPlayerName(String name) {
         speler1.setName(name);
+    }
+
+    public Vraag getQuestionFromVragenArray(int vraagnr) {
+        this.currentQuestion = VragenArray[vraagnr];
+                return this.VragenArray[vraagnr];
+    }
+
+    public int getVraagNr() {
+        return this.vraagNr;
+    }
+
+    public void increaseVraagNr() {
+        this.vraagNr += 1;
     }
 }
