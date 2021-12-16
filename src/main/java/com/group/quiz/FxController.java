@@ -78,6 +78,7 @@ public class FxController {
     }
     public void onOKbuttonClick(){
         String name = nameField.getText();
+        viewController.setName(name);
         viewController.onButtonNextClick();
         enableButtons();
         nameLabel.setText(name);
@@ -99,7 +100,7 @@ public class FxController {
     public void ButtonColour(boolean[] bool) {
         Button[] buttons = new Button[] {buttonA, buttonB, buttonC, buttonD};
         for (int i = 0; i < 4; i++){
-            if (bool[i] == true){
+            if (bool[i]){
                 buttons[i].setStyle("-fx-background-color: #06d21e; ");
             }
             else{
@@ -119,10 +120,10 @@ public class FxController {
 
     public void enableButtons(){
         Button[] buttons = new Button[] {buttonA, buttonB, buttonC, buttonD};
-        for (int i = 0; i < buttons.length; i++){
-            buttons[i].setStyle("-fx-background-color: #dcdcdc; ");
-            buttons[i].setDisable(false);
-            buttons[i].setVisible(true);
+        for (Button button : buttons) {
+            button.setStyle("-fx-background-color: #dcdcdc; ");
+            button.setDisable(false);
+            button.setVisible(true);
         }
         buttonNext.setDisable(true);
     }

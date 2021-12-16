@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Antwoord;
 import com.group.quiz.FxController;
 
 public class ViewController {
@@ -31,7 +30,7 @@ public class ViewController {
 
     public void checkAnswer(boolean correct) {
         String text;
-        if (correct == true){
+        if (correct){
             text = "Your answer is correct";
         }
         else{
@@ -47,5 +46,9 @@ public class ViewController {
     public void updateScore(int score) {
         String scr = String.valueOf(score);
         fxController.updateScore(scr);
+    }
+
+    public void setName(String name) {
+        modelController.setName(name);
     }
 }

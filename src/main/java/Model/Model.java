@@ -1,21 +1,19 @@
 package Model;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class Model {
     //Bij aanmaken van Model wordt een URL aangeroepen en wordt een verzameling vragen in 'verzameling' gestopt.
     String urlAddress = "https://opentdb.com/api.php?amount=1&type=multiple";         //TODO: url bouwen?
-    URLReader reader = new URLReader();
-    String JSONstring = reader.read(urlAddress);
+    String JSONstring = URLReader.read(urlAddress);
     VerzamelingVragen verzameling = new VerzamelingVragen(JSONstring);
 
     public Vraag currentQuestion = new Vraag();
     public Speler speler1 = new Speler();
 
-    public Vraag createQuestion()
+    /*public Vraag createQuestion()
     {
         Vraag vraag1 = new Vraag();
         vraag1.category = "Entertainment: Video Games";
@@ -47,7 +45,7 @@ public class Model {
 
         currentQuestion = vraag1;
         return (vraag1);
-    }
+    }*/
 
     public Vraag createVariableQuestion()
     {
@@ -125,12 +123,15 @@ public class Model {
         boolean b = currentQuestion.antwoord2.getCorrect();
         boolean c = currentQuestion.antwoord3.getCorrect();
         boolean d = currentQuestion.antwoord4.getCorrect();
-        boolean[] bool = new boolean[] {a, b, c, d};
-        return bool;
+        return new boolean[] {a, b, c, d};
     }
 
     public int getScore()
     {
         return speler1.getScore();
+    }
+
+    public void setPlayerName(String name) {
+        speler1.setName(name);
     }
 }

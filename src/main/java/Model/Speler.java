@@ -1,9 +1,8 @@
 package Model;
-import java.util.ArrayList;
 
 public class Speler
 {
-    public String name;
+    private String name;
     private int score = 0;
 
     public int getScore(){
@@ -13,5 +12,13 @@ public class Speler
     public void increaseScore()
     {
         this.score = this.score + 1;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
