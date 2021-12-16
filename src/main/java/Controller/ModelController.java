@@ -45,7 +45,8 @@ public class ModelController {
         model.setPlayerName(name);
     }
 
-    public void fillArray(){
+    public void makeQuestionArray(){
+        model.buildVerzamelingVragen();
         model.fillVragenArray();
     }
 

@@ -58,7 +58,7 @@ public class ViewController {
     }
 
     public void onButtonOkClick() {
-        modelController.fillArray();
+        modelController.makeQuestionArray();
         modelController.getQuestion();
     }
 
