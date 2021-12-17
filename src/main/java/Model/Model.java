@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Model {
     //Bij aanmaken van Model wordt een URL aangeroepen en wordt een verzameling vragen in 'verzameling' gestopt.
-    String urlAddress = "https://opentdb.com/api.php?amount=3&type=multiple";         //TODO: url bouwen?
+    String urlAddress = "https://opentdb.com/api.php?amount=10&type=multiple";         //TODO: url bouwen?
     String JSONstring = URLReader.read(urlAddress);
     VerzamelingVragen verzameling = new VerzamelingVragen(JSONstring);
 

@@ -30,6 +30,7 @@ public class URLReader {
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
+        System.out.println(jsonString);
         return jsonString;
     }
 }

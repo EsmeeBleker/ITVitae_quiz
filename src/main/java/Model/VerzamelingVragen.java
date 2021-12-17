@@ -21,11 +21,13 @@ public class VerzamelingVragen {
     }
 
     public String getQuestion(int vraagnr) {
-        return vragenObject.getJSONArray("results").getJSONObject(vraagnr).get("question").toString();
+        String vraagMetGekkeTekens = vragenObject.getJSONArray("results").getJSONObject(vraagnr).get("question").toString();
+        return GekkeTekensWeg.HTMLnaarLeesbaar(vraagMetGekkeTekens);
     }
 
     public String getCorrectAnswer(int vraagnr) {
-        return vragenObject.getJSONArray("results").getJSONObject(vraagnr).get("correct_answer").toString();
+        String antwoordMetGekkeTekens = vragenObject.getJSONArray("results").getJSONObject(vraagnr).get("correct_answer").toString();
+        return GekkeTekensWeg.HTMLnaarLeesbaar(antwoordMetGekkeTekens);
     }
 
     public int getAmountQuestions() {
@@ -45,7 +47,8 @@ public class VerzamelingVragen {
     }
 
     public String getIncorrectAnswer(int vraagnr, int antwoordnr) {
-        return vragenObject.getJSONArray("results").getJSONObject(vraagnr).getJSONArray("incorrect_answers").get(antwoordnr).toString();
+        String antwoordMetGekkeTekens = vragenObject.getJSONArray("results").getJSONObject(vraagnr).getJSONArray("incorrect_answers").get(antwoordnr).toString();
+        return GekkeTekensWeg.HTMLnaarLeesbaar(antwoordMetGekkeTekens);
     }
 
     public String getDifficulty(int vraagnr) {
