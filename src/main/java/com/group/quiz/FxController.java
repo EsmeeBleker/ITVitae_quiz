@@ -3,11 +3,16 @@ package com.group.quiz;
 import Controller.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class FxController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class FxController implements Initializable {
 
     private final ViewController viewController;
 
@@ -34,9 +39,20 @@ public class FxController {
     private Label scoreLabel;
     @FXML
     private TextField nameField;
+    @FXML
+    private Label progressLabel;
+    @FXML
+    private ChoiceBox<String> maxQuestionsBox;
+    private String[] choices = {"5", "10", "15", "20", "30", "40", "50"};
 
     public FxController() {
         viewController = new ViewController(this);
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1){
+        maxQuestionsBox.getItems().addAll(choices);
+        maxQuestionsBox.setOnAction(this::getMaxQuestions);
     }
 
     @FXML
@@ -55,6 +71,11 @@ public class FxController {
         buttonB.setText(answers[1]);
         buttonC.setText(answers[2]);
         buttonD.setText(answers[3]);
+    }
+
+    public void getMaxQuestions(ActionEvent event){
+        String maxQuestions = maxQuestionsBox.getValue();
+        viewController.setMaxQuestions(maxQuestions);
     }
 
     public void onAButtonClick() {
@@ -86,7 +107,6 @@ public class FxController {
         nameField.setVisible(false);
         nameLabel.setVisible(true);
         scoreLabel.setVisible(true);
-        answerLabel.setVisible(true);
         buttonNext.setVisible(true);
         buttonNext.setDisable(true);
         buttonOK.setDisable(true);
@@ -96,6 +116,7 @@ public class FxController {
     public void setAnswerLabel(String text) {
         answerLabel.setText(text);
     }
+
 
     public void ButtonColour(boolean[] bool) {
         Button[] buttons = new Button[] {buttonA, buttonB, buttonC, buttonD};
@@ -115,6 +136,7 @@ public class FxController {
         buttonC.setDisable(true);
         buttonD.setDisable(true);
         buttonNext.setDisable(false);
+        answerLabel.setVisible(true);
 
     }
 
@@ -126,9 +148,14 @@ public class FxController {
             button.setVisible(true);
         }
         buttonNext.setDisable(true);
+        answerLabel.setVisible(false);
     }
 
     public void updateScore(String scr) {
         scoreLabel.setText("Score: " + scr);
+    }
+
+    public void setProgess(int i) {
+        progressLabel.setText("Vraag: " + i);
     }
 }
