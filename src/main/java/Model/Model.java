@@ -5,15 +5,33 @@ import java.util.Collections;
 
 public class Model {
     //Bij aanmaken van Model wordt een URL aangeroepen en wordt een verzameling vragen in 'verzameling' gestopt.
-    String urlAddress = "https://opentdb.com/api.php?amount=10&type=multiple";         //TODO: url bouwen?
-    String JSONstring = URLReader.read(urlAddress);
-    VerzamelingVragen verzameling = new VerzamelingVragen(JSONstring);
-
-    int verzamelingVragenAantal = verzameling.getAmountQuestions();
-    public Vraag[] VragenArray = new Vraag[verzamelingVragenAantal];
-
+    //String urlAddress = "https://opentdb.com/api.php?amount=4&type=multiple";         //TODO: url bouwen?
+    URLBuilder urlBuilder = new URLBuilder();
+    String urlAddress;
+    String JSONstring;
+    VerzamelingVragen verzameling;
+    int verzamelingVragenAantal;
+    public Vraag[] VragenArray;
     private int vraagNr;
     private Vraag currentQuestion;
+    private String maxQuestions;
+
+    public void setMaxQuestions(String max){
+        this.maxQuestions = max;
+    }
+
+    public String getMaxQuestions(){
+        return this.maxQuestions;
+    }
+
+    public void buildVerzamelingVragen(){
+        this.urlBuilder.setAmountQuestions(this.maxQuestions);
+        this.urlAddress = urlBuilder.buildURL();
+        this.JSONstring = URLReader.read(urlAddress);
+        this.verzameling = new VerzamelingVragen(JSONstring);
+        this.verzamelingVragenAantal = verzameling.getAmountQuestions();
+        this.VragenArray = new Vraag[verzamelingVragenAantal];
+    }
 
     public void fillVragenArray() {
         for (int vraagnr = 0; vraagnr < verzamelingVragenAantal; vraagnr++) {
@@ -162,5 +180,13 @@ public class Model {
 
     public void increaseVraagNr() {
         this.vraagNr += 1;
+    }
+
+    public boolean isLastQuestion() {
+        boolean lastQuestion = false;
+        if (getVraagNr() == VragenArray.length -1) {
+            lastQuestion = true;
+        }
+        return lastQuestion;
     }
 }
