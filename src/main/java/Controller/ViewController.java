@@ -86,7 +86,7 @@ public class ViewController {
             wellDoneText = "Excellent work!";
         }
         else{
-            wellDoneText = "Congratulations! You got all questions correct!";
+            wellDoneText = "Congratulations, you got all questions correct!";
         }
         fxController.setFinalScreen(score, maxQuestions, wellDoneText);
     }
