@@ -35,6 +35,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="apache.commons.lang3" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
