@@ -15,7 +15,8 @@ public class Model {
     private int vraagNr;
     private Vraag currentQuestion;
     private String maxQuestions;
-    private String categoryQuestions =  "11";
+    private String categoryQuestions =  "";
+    private String categoryNameQuestions = "";
 
     public void setMaxQuestions(String max){
         this.maxQuestions = max;
@@ -27,7 +28,7 @@ public class Model {
 
     public void buildVerzamelingVragen(){
         this.urlBuilder.setAmountQuestions(this.maxQuestions);
-        this.urlBuilder.setCategoryQuestions(this.categoryQuestions);
+        this.urlBuilder.setCategoryNumberQuestions(this.categoryNameQuestions);
         this.urlAddress = urlBuilder.buildURL();
         this.JSONstring = URLReader.read(urlAddress);
         this.verzameling = new VerzamelingVragen(JSONstring);
@@ -198,5 +199,9 @@ public class Model {
 
     public void resetVraagnr() {
         vraagNr = 0;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryNameQuestions = categoryName;
     }
 }

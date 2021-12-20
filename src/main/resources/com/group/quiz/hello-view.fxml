@@ -18,6 +18,7 @@
               <Label fx:id="questionLabel" alignment="CENTER" minHeight="50.0" text="What is your name?" wrapText="true" />
             <TextField fx:id="nameField" alignment="CENTER" />
             <ChoiceBox fx:id="maxQuestionsBox" prefWidth="150.0" />
+            <ChoiceBox fx:id="categoryNameBox" prefWidth="150.0" />
             <TilePane alignment="CENTER" maxWidth="1.7976931348623157E308" orientation="VERTICAL">
                <children>
                     <Button fx:id="buttonA" alignment="CENTER" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAButtonClick" text="Button" visible="false" />

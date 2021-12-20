@@ -69,4 +69,6 @@ public class ModelController {
         // Set Vraagnr to 0
         model.resetVraagnr();
     }
+
+    public void setCategoryName(String categoryName) { model.setCategoryName(categoryName); }
 }
