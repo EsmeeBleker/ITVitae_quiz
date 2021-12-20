@@ -43,6 +43,11 @@ public class FxController implements Initializable {
     private Label progressLabel;
     @FXML
     private ChoiceBox<String> maxQuestionsBox;
+    @FXML
+    private Button buttonEnd;
+    @FXML
+    private Button buttonRetry;
+
     private String[] choices = {"5", "10", "15", "20", "30", "40", "50"};
 
     public FxController() {
@@ -57,9 +62,8 @@ public class FxController implements Initializable {
 
     @FXML
     protected void onNextButtonClick() {
-        viewController.onButtonNextClick();
         enableButtons();
-
+        viewController.onButtonNextClick();
     }
     @FXML
     public void setQuestionText(String question) {
@@ -97,6 +101,7 @@ public class FxController implements Initializable {
         viewController.buttonClicked(4);
         disableButtons();
     }
+
     public void onOKbuttonClick(){
         String name = nameField.getText();
         viewController.setName(name);
@@ -106,12 +111,17 @@ public class FxController implements Initializable {
         nameField.setDisable(true);
         nameField.setVisible(false);
         nameLabel.setVisible(true);
+        scoreLabel.setText("Score: 0");
         scoreLabel.setVisible(true);
         buttonNext.setVisible(true);
         buttonNext.setDisable(true);
         buttonOK.setDisable(true);
         buttonOK.setVisible(false);
+        maxQuestionsBox.setVisible(false);
+        maxQuestionsBox.setDisable(true);
     }
+
+
 
     public void setAnswerLabel(String text) {
         answerLabel.setText(text);
@@ -155,7 +165,48 @@ public class FxController implements Initializable {
         scoreLabel.setText("Score: " + scr);
     }
 
-    public void setProgess(int i) {
-        progressLabel.setText("Vraag: " + i);
+    public void setProgess(int i, String maxQuestions) {
+        progressLabel.setText("Vraag: " + i + " / " + maxQuestions);
+    }
+
+    public void setFinalScreen(int score, String maxQuestions, String wellDoneText) {
+        invisibleAll();
+        questionLabel.setText("You got " + score + " out of " + maxQuestions + " correct.");
+        answerLabel.setVisible(true);
+        answerLabel.setText(wellDoneText);
+        buttonEnd.setVisible(true);
+        buttonEnd.setDisable(false);
+        buttonRetry.setVisible(true);
+        buttonRetry.setDisable(false);
+    }
+
+    public void invisibleAll(){
+        Button[] buttons = new Button[] {buttonA, buttonB, buttonC, buttonD, buttonNext};
+        for (Button button : buttons){
+            button.setDisable(true);
+            button.setVisible(false);
+        }
+        Label[] labels = new Label[] {progressLabel, nameLabel, scoreLabel};
+        for (Label label : labels){
+            label.setVisible(false);
+        }
+    }
+
+    public void onRetryButtonClick(ActionEvent actionEvent) {
+        buttonOK.setVisible(true);
+        buttonOK.setDisable(false);
+        maxQuestionsBox.setVisible(true);
+        maxQuestionsBox.setDisable(false);
+        questionLabel.setText("Number of questions?");
+        answerLabel.setText("");
+        buttonRetry.setDisable(true);
+        buttonRetry.setVisible(false);
+        buttonEnd.setDisable(true);
+        buttonEnd.setVisible(false);
+        viewController.resetGame();
+    }
+
+    public void onEndButtonClick(ActionEvent actionEvent) {
+        System.exit(0);
     }
 }
