@@ -198,6 +198,7 @@ public class FxController implements Initializable {
         maxQuestionsBox.setVisible(true);
         maxQuestionsBox.setDisable(false);
         questionLabel.setText("Number of questions?");
+        answerLabel.setText("");
         buttonRetry.setDisable(true);
         buttonRetry.setVisible(false);
         buttonEnd.setDisable(true);
