@@ -28,6 +28,8 @@
             </TilePane>
                 <Label fx:id="answerLabel" alignment="CENTER" contentDisplay="CENTER" text="Label" visible="false" />
             <Button fx:id="buttonOK" mnemonicParsing="false" onAction="#onOKbuttonClick" text="OK" />
+            <Button fx:id="buttonRetry" mnemonicParsing="false" text="Retry" visible = "false" disable = "true" onAction ="#onRetryButtonClick"/>
+            <Button fx:id="buttonEnd" mnemonicParsing="false" text="End" visible = "false" disable = "true" onAction="#onEndButtonClick"/>
          </children>
       </VBox>
         <HBox alignment="BOTTOM_RIGHT">

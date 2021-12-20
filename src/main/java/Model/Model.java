@@ -189,4 +189,12 @@ public class Model {
         }
         return lastQuestion;
     }
+
+    public void resetScore() {
+        speler1.setScore(0);
+    }
+
+    public void resetVraagnr() {
+        vraagNr = 0;
+    }
 }

@@ -22,7 +22,7 @@ public class ModelController {
         answers[3] = vraag1.antwoord4.getAntwoord();
         viewController.setQuestion(vraag1.question);
         viewController.setAnswer(answers);
-        viewController.setProgress(model.getVraagNr());
+        viewController.setProgress(model.getVraagNr(), model.getMaxQuestions());
     }
 
     public void incrementQuestion() {
@@ -56,5 +56,17 @@ public class ModelController {
 
     public boolean isLastQuestion() {
         return model.isLastQuestion();
+    }
+
+    public void getScore() {
+        viewController.setFinalScreen(model.getScore(), model.getMaxQuestions());
+    }
+
+    public void resetGame() {
+        // Set score to 0
+        model.resetScore();
+
+        // Set Vraagnr to 0
+        model.resetVraagnr();
     }
 }
