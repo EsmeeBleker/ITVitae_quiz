@@ -14,7 +14,7 @@ public class ViewController {
 
     public void onButtonNextClick() {
         if (modelController.isLastQuestion()) {
-            System.out.println("einde quiz!"); //todo: vervang door FX scherm
+            modelController.getScore();
         } else {
             modelController.incrementQuestion();
             modelController.getQuestion();
@@ -53,8 +53,11 @@ public class ViewController {
         fxController.updateScore(scr);
     }
 
-    public void setName(String name) {
-        modelController.setName(name);
+    public void setName(String name)
+    {
+        if (name.isEmpty() == false){
+            modelController.setName(name);
+        }
     }
 
     public void onButtonOkClick() {
@@ -62,11 +65,33 @@ public class ViewController {
         modelController.getQuestion();
     }
 
-    public void setProgress(int vraagNr) {
-        fxController.setProgess(vraagNr + 1);
+    public void setProgress(int vraagNr, String maxQuestions) {
+        fxController.setProgess(vraagNr + 1, maxQuestions);
     }
 
     public void setMaxQuestions(String maxQuestions) {
         modelController.buildURL(maxQuestions);
+    }
+
+    public void setFinalScreen(int score, String maxQuestions) {
+        int max = Integer.parseInt(maxQuestions);
+        String wellDoneText;
+        if (score / max < 0.5){
+            wellDoneText = "Better luck next time!";
+        }
+        else if (score / max < 0.8){
+            wellDoneText = "Well done!";
+        }
+        else if (score / max < 1){
+            wellDoneText = "Excellent work!";
+        }
+        else{
+            wellDoneText = "Congratulations! You got all questions correct!";
+        }
+        fxController.setFinalScreen(score, maxQuestions, wellDoneText);
+    }
+
+    public void resetGame() {
+        modelController.resetGame();
     }
 }

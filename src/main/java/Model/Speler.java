@@ -9,6 +9,10 @@ public class Speler
         return this.score;
     }
 
+    public void setScore(int score){
+        this.score = score;
+    }
+
     public void increaseScore()
     {
         this.score = this.score + 1;
