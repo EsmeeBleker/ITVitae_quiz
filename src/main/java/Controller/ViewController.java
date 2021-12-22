@@ -94,4 +94,6 @@ public class ViewController {
     public void resetGame() {
         modelController.resetGame();
     }
+
+    public void setCategoryName(String categoryName) { modelController.setCategoryName(categoryName); }
 }

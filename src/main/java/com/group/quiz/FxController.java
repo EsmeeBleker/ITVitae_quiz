@@ -1,6 +1,7 @@
 package com.group.quiz;
 
 import Controller.ViewController;
+import Model.Categorieën;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,11 +45,15 @@ public class FxController implements Initializable {
     @FXML
     private ChoiceBox<String> maxQuestionsBox;
     @FXML
+    private ChoiceBox<String> categoryNameBox;
+    @FXML
     private Button buttonEnd;
     @FXML
     private Button buttonRetry;
 
     private String[] choices = {"5", "10", "15", "20", "30", "40", "50"};
+
+    private String[] choicesCategories = Categorieën.getAllCategoryNames();
 
     public FxController() {
         viewController = new ViewController(this);
@@ -58,6 +63,13 @@ public class FxController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1){
         maxQuestionsBox.getItems().addAll(choices);
         maxQuestionsBox.setOnAction(this::getMaxQuestions);
+        categoryNameBox.getItems().addAll(choicesCategories);
+        categoryNameBox.setOnAction(this::getCategoryName);
+    }
+
+    private void getCategoryName(ActionEvent actionEvent) {
+        String categoryName = categoryNameBox.getValue();
+        viewController.setCategoryName(categoryName);
     }
 
     @FXML
@@ -119,6 +131,8 @@ public class FxController implements Initializable {
         buttonOK.setVisible(false);
         maxQuestionsBox.setVisible(false);
         maxQuestionsBox.setDisable(true);
+        categoryNameBox.setVisible(false);
+        categoryNameBox.setDisable(true);
     }
 
 
@@ -197,6 +211,8 @@ public class FxController implements Initializable {
         buttonOK.setDisable(false);
         maxQuestionsBox.setVisible(true);
         maxQuestionsBox.setDisable(false);
+        categoryNameBox.setVisible(true);
+        categoryNameBox.setDisable(false);
         questionLabel.setText("Number of questions?");
         answerLabel.setText("");
         buttonRetry.setDisable(true);
