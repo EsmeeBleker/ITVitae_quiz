@@ -71,4 +71,7 @@ public class ModelController {
     }
 
     public void setCategoryName(String categoryName) { model.setCategoryName(categoryName); }
+
+    public void setDifficultyName(String difficultyName) { model.setDifficultyName(difficultyName);
+    }
 }

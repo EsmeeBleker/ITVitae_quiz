@@ -2,6 +2,7 @@ package com.group.quiz;
 
 import Controller.ViewController;
 import Model.Categorieën;
+import Model.Difficulty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,6 +48,8 @@ public class FxController implements Initializable {
     @FXML
     private ChoiceBox<String> categoryNameBox;
     @FXML
+    private ChoiceBox<String> difficultyBox;
+    @FXML
     private Button buttonEnd;
     @FXML
     private Button buttonRetry;
@@ -54,6 +57,10 @@ public class FxController implements Initializable {
     private String[] choices = {"5", "10", "15", "20", "30", "40", "50"};
 
     private String[] choicesCategories = Categorieën.getAllCategoryNames();
+
+    private String[] difficulties = {"easy","medium", "hard"};
+
+    private String[] difficultiesCategories = Difficulty.getAllDifficulties();
 
     public FxController() {
         viewController = new ViewController(this);
@@ -65,11 +72,18 @@ public class FxController implements Initializable {
         maxQuestionsBox.setOnAction(this::getMaxQuestions);
         categoryNameBox.getItems().addAll(choicesCategories);
         categoryNameBox.setOnAction(this::getCategoryName);
+        difficultyBox.getItems().addAll(difficulties);
+        difficultyBox.setOnAction(this::getDifficultyName);
+
     }
 
     private void getCategoryName(ActionEvent actionEvent) {
         String categoryName = categoryNameBox.getValue();
         viewController.setCategoryName(categoryName);
+    }
+    private void getDifficultyName(ActionEvent actionEvent) {
+        String difficultyName = difficultyBox.getValue();
+        viewController.setDifficultyName(difficultyName);
     }
 
     @FXML
@@ -133,6 +147,8 @@ public class FxController implements Initializable {
         maxQuestionsBox.setDisable(true);
         categoryNameBox.setVisible(false);
         categoryNameBox.setDisable(true);
+        difficultyBox.setVisible(false);
+        difficultyBox.setDisable(true);
     }
 
 
@@ -213,6 +229,8 @@ public class FxController implements Initializable {
         maxQuestionsBox.setDisable(false);
         categoryNameBox.setVisible(true);
         categoryNameBox.setDisable(false);
+        difficultyBox.setVisible(true);
+        difficultyBox.setDisable(false);
         questionLabel.setText("Number of questions?");
         answerLabel.setText("");
         buttonRetry.setDisable(true);

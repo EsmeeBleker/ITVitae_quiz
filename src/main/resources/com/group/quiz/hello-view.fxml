@@ -19,6 +19,7 @@
             <TextField fx:id="nameField" alignment="CENTER" />
             <ChoiceBox fx:id="maxQuestionsBox" prefWidth="150.0" />
             <ChoiceBox fx:id="categoryNameBox" prefWidth="150.0" />
+            <ChoiceBox fx:id="difficultyBox" prefWidth="150.0" />
             <TilePane alignment="CENTER" maxWidth="1.7976931348623157E308" orientation="VERTICAL">
                <children>
                     <Button fx:id="buttonA" alignment="CENTER" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAButtonClick" text="Button" visible="false" />
@@ -29,8 +30,8 @@
             </TilePane>
                 <Label fx:id="answerLabel" alignment="CENTER" contentDisplay="CENTER" text="Label" visible="false" />
             <Button fx:id="buttonOK" mnemonicParsing="false" onAction="#onOKbuttonClick" text="OK" />
-            <Button fx:id="buttonRetry" mnemonicParsing="false" text="Retry" visible = "false" disable = "true" onAction ="#onRetryButtonClick"/>
-            <Button fx:id="buttonEnd" mnemonicParsing="false" text="End" visible = "false" disable = "true" onAction="#onEndButtonClick"/>
+            <Button fx:id="buttonRetry" disable="true" mnemonicParsing="false" onAction="#onRetryButtonClick" text="Retry" visible="false" />
+            <Button fx:id="buttonEnd" disable="true" mnemonicParsing="false" onAction="#onEndButtonClick" text="End" visible="false" />
          </children>
       </VBox>
         <HBox alignment="BOTTOM_RIGHT">
