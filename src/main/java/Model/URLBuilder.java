@@ -18,12 +18,13 @@ public class URLBuilder {
         if (difficultyQuestions.equals("")) {
             //do nothing
         } else {
-            this.amountQuestions = "&difficulty=" + difficultyQuestions;
+            this.difficultyQuestions= "&difficulty=" + difficultyQuestions;
         }
     }
 
     public String buildURL() {
         String URL = baseURL + amountQuestions + categoryNumberQuestions + difficultyQuestions + typeQuestions;
+        System.out.println(URL);
         return URL;
     }
 

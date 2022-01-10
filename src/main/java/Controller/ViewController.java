@@ -96,4 +96,7 @@ public class ViewController {
     }
 
     public void setCategoryName(String categoryName) { modelController.setCategoryName(categoryName); }
+
+    public void setDifficultyName(String difficultyName) { modelController.setDifficultyName(difficultyName);
+    }
 }

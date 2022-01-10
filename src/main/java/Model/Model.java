@@ -17,6 +17,7 @@ public class Model {
     private String maxQuestions;
     private String categoryQuestions =  "";
     private String categoryNameQuestions = "";
+    private String difficultyQuestions ="";
 
     public void setMaxQuestions(String max){
         this.maxQuestions = max;
@@ -29,6 +30,7 @@ public class Model {
     public void buildVerzamelingVragen(){
         this.urlBuilder.setAmountQuestions(this.maxQuestions);
         this.urlBuilder.setCategoryNumberQuestions(this.categoryNameQuestions);
+        this.urlBuilder.setDifficultyQuestions(this.difficultyQuestions);
         this.urlAddress = urlBuilder.buildURL();
         this.JSONstring = URLReader.read(urlAddress);
         this.verzameling = new VerzamelingVragen(JSONstring);
@@ -204,4 +206,7 @@ public class Model {
     public void setCategoryName(String categoryName) {
         this.categoryNameQuestions = categoryName;
     }
-}
+
+    public void setDifficultyName(String difficultyName) {this.difficultyQuestions = difficultyName;}
+    }
+
