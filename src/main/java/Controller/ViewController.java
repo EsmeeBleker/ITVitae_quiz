@@ -4,15 +4,14 @@ import com.group.quiz.FxController;
 
 public class ViewController {
     private final ModelController modelController;
-    private final FxController fxController;
+    private FxController fxController;
 
     public ViewController(FxController fxController) {
         this.fxController = fxController;
         modelController = new ModelController(this);
-        
     }
 
-    public void onButtonNextClick() {
+    public void onButtonNextClick() throws Exception {
         if (modelController.isLastQuestion()) {
             modelController.getScore();
         } else {
@@ -22,11 +21,11 @@ public class ViewController {
     }
 
     public void setQuestion(String question) {
-        fxController.setQuestionText(question);
+        fxController.quizscreenSetQuestionText(question);
     }
 
     public void setAnswer(String[] answers) {
-        fxController.setTextButton(answers);
+        fxController.quizscreenSetTextButton(answers);
     }
 
     public void buttonClicked(int i) {
@@ -41,16 +40,16 @@ public class ViewController {
         else{
             text = "Your answer is incorrect";
         }
-        fxController.setAnswerLabel(text);
+        fxController.quizscreenSetAnswerLabel(text);
     }
 
     public void colourButton(boolean[] bool) {
-        fxController.ButtonColour(bool);
+        fxController.quizscreenButtonColour(bool);
     }
 
     public void updateScore(int score) {
         String scr = String.valueOf(score);
-        fxController.updateScore(scr);
+        fxController.quizscreenUpdateScore(scr);
     }
 
     public void setName(String name)
@@ -66,14 +65,14 @@ public class ViewController {
     }
 
     public void setProgress(int vraagNr, String maxQuestions) {
-        fxController.setProgess(vraagNr + 1, maxQuestions);
+        fxController.quizscreenSetProgess(vraagNr + 1, maxQuestions);
     }
 
     public void setMaxQuestions(String maxQuestions) {
         modelController.buildURL(maxQuestions);
     }
 
-    public void setFinalScreen(int score, String maxQuestions) {
+    public void setFinalScreen(int score, String maxQuestions) throws Exception {
         int max = Integer.parseInt(maxQuestions);
         String wellDoneText;
         if (score / max < 0.5){
@@ -88,10 +87,19 @@ public class ViewController {
         else{
             wellDoneText = "Congratulations, you got all questions correct!";
         }
-        fxController.setFinalScreen(score, maxQuestions, wellDoneText);
+        fxController.quizscreenSetFinalScreen();
+        fxController.endscreenSetScoreAndText(score, maxQuestions, wellDoneText);
     }
 
     public void resetGame() {
         modelController.resetGame();
+    }
+
+    public void getName() {
+        modelController.getName();
+    }
+
+    public void returnName(String name) {
+    fxController.quizscreenSetNameLabel(name);
     }
 }

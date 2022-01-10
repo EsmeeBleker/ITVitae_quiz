@@ -3,20 +3,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.quiz.FxController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group.quiz.FxControllerQuiz">
     <children>
       <Label fx:id="nameLabel" text="Name" visible="false" />
       <Label fx:id="progressLabel" text="Label" />
       <Label fx:id="scoreLabel" text="Score: 0" visible="false" />
       <VBox alignment="CENTER">
          <children>
-              <Label fx:id="questionLabel" alignment="CENTER" minHeight="50.0" text="What is your name?" wrapText="true" />
-            <TextField fx:id="nameField" alignment="CENTER" />
+              <Label fx:id="questionLabel" alignment="CENTER" minHeight="50.0" text="Choose category" wrapText="true" />
             <ChoiceBox fx:id="maxQuestionsBox" prefWidth="150.0" />
             <TilePane alignment="CENTER" maxWidth="1.7976931348623157E308" orientation="VERTICAL">
                <children>
@@ -28,8 +26,6 @@
             </TilePane>
                 <Label fx:id="answerLabel" alignment="CENTER" contentDisplay="CENTER" text="Label" visible="false" />
             <Button fx:id="buttonOK" mnemonicParsing="false" onAction="#onOKbuttonClick" text="OK" />
-            <Button fx:id="buttonRetry" mnemonicParsing="false" text="Retry" visible = "false" disable = "true" onAction ="#onRetryButtonClick"/>
-            <Button fx:id="buttonEnd" mnemonicParsing="false" text="End" visible = "false" disable = "true" onAction="#onEndButtonClick"/>
          </children>
       </VBox>
         <HBox alignment="BOTTOM_RIGHT">

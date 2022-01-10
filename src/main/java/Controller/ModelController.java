@@ -58,7 +58,7 @@ public class ModelController {
         return model.isLastQuestion();
     }
 
-    public void getScore() {
+    public void getScore() throws Exception {
         viewController.setFinalScreen(model.getScore(), model.getMaxQuestions());
     }
 
@@ -68,5 +68,10 @@ public class ModelController {
 
         // Set Vraagnr to 0
         model.resetVraagnr();
+    }
+
+    public void getName() {
+        String name = model.getName();
+        viewController.returnName(name);
     }
 }

@@ -197,4 +197,8 @@ public class Model {
     public void resetVraagnr() {
         vraagNr = 0;
     }
+
+    public String getName() {
+        return speler1.getName();
+    }
 }
